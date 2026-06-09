@@ -1,4 +1,4 @@
-# Creator: Pavan Baloo
+# Creator: Ladi
 # Date Created: 07/10/2020
 # Date Last Modified: 07/10/2020
 # Creates a PHP web application hosted on Apache Web Server
@@ -21,7 +21,7 @@ Parameters:
   DisplayedName: 
     Description: Name displayed on web page
     Type: String
-    Default: Pavan
+    Default: Ladi
     AllowedPattern: "[a-zA-Z]*"
   
   # BucketName: Name of S3 bucket for CW Logs
@@ -36,7 +36,7 @@ Resources:
 
   # EC2 instance for webserver
   EC2Instance: 
-    Type: AWS::EC2::Instance
+    Type: t3micro
     # EC2 instance metadata
     Metadata:
       # Used to include EC2 metadata for cfn-init helper script
