@@ -11,7 +11,14 @@ Description: Testing a basic CFN template
       
 # Parameters used: InstanceType, DisplayedName, LatestAmiId
 Parameters: 
-  
+  InstanceType:
+    Type: String
+    Default: t3.micro
+    AllowedValues:
+      - t3.micro
+      - t2.micro
+    Description: Free Tier eligible EC2 instance type
+    
   # Uses public Systems Manager Parameter for latest AMI
   LatestAmiId:
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
@@ -21,7 +28,7 @@ Parameters:
   DisplayedName: 
     Description: Name displayed on web page
     Type: String
-    Default: Pavan
+    Default: Ladi
     AllowedPattern: "[a-zA-Z]*"
   
   # BucketName: Name of S3 bucket for CW Logs
@@ -72,8 +79,8 @@ Resources:
 
     # EC2 instance properties 
     Properties:
-      # gets type of instance from parameters
-      InstanceType: t2.micro
+      # free-tier compatible instance type
+      InstanceType: t3.micro
       # adds instance profile to enable CloudWatch and SSM
       IamInstanceProfile: !Ref InstanceProfile
       # find instance AMI based on mapping of regions to AMIs
